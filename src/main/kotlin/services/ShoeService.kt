@@ -59,7 +59,7 @@ class ShoeService(private val shoeRepository: IShoeRepository) {
         return req
     }
 
-x    private fun validateShoeRequest(req: ShoeRequest) {
+      private fun validateShoeRequest(req: ShoeRequest) {
         val v = ValidatorHelper(req.toMap())
         v.required("nama", "Nama sepatu tidak boleh kosong")
         v.required("merek", "Merek tidak boleh kosong")
