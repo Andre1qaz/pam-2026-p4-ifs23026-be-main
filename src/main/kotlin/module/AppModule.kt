@@ -33,6 +33,18 @@ val appModule = module {
         DestinationService(get())
     }
 
+
+    // =========================
+    // Shoe (TAMBAHAN)
+    // =========================
+    single<org.delcom.repositories.IShoeRepository> {
+        org.delcom.repositories.ShoeRepository()
+    }
+
+    single {
+        org.delcom.services.ShoeService(get())
+    }
+
     // =========================
     // Profile
     // =========================

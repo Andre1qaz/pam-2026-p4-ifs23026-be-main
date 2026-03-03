@@ -9,6 +9,7 @@ import org.delcom.data.AppException
 import org.delcom.data.ErrorResponse
 import org.delcom.helpers.parseMessageToMap
 import org.delcom.services.PlantService
+import org.delcom.services.ShoeService
 import org.delcom.services.ProfileService
 import org.delcom.services.DestinationService
 import org.koin.ktor.ext.inject
@@ -16,7 +17,8 @@ import org.koin.ktor.ext.inject
 fun Application.configureRouting() {
     val plantService: PlantService by inject()
     val profileService: ProfileService by inject()
-    val destinationService: DestinationService by inject() // ✅ Tambahan
+    val destinationService: DestinationService by inject()
+    val shoeService: ShoeService by inject() // ✅ Tambahan Shoes
 
     install(StatusPages) {
         // Tangkap AppException
@@ -48,7 +50,7 @@ fun Application.configureRouting() {
 
     routing {
         get("/") {
-            call.respondText("API telah berjalan. Dibuat oleh Lola Cantik.")
+            call.respondText("API telah berjalan. Dibuat oleh Andre Komting.")
         }
 
         // =========================
@@ -78,6 +80,20 @@ fun Application.configureRouting() {
 
             get("/{id}/image") { destinationService.getDestinationImage(call) }
         }
+        // =========================
+        // Route Shoes (TAMBAHAN)
+        // =========================
+        route("/shoes") {
+            get { shoeService.getAllShoes(call) }
+            post { shoeService.createShoe(call) }
+
+            get("/{id}") { shoeService.getShoeById(call) }
+            put("/{id}") { shoeService.updateShoe(call) }
+            delete("/{id}") { shoeService.deleteShoe(call) }
+
+            get("/{id}/image") { shoeService.getShoeImage(call) }
+        }
+
 
         // =========================
         // Route Profile (existing)

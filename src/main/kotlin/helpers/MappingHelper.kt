@@ -34,3 +34,15 @@ fun daoToModel(dao: DestinationDAO) = Destination(
     createdAt = dao.createdAt,
     updatedAt = dao.updatedAt
 )
+// Mapping Shoes (tambahan)
+fun daoToModelShoe(dao: org.delcom.dao.ShoeDAO) = org.delcom.entities.Shoe(
+    id = dao.id.value.toString(),
+    nama = dao.nama,
+    merek = dao.merek,
+    tipe = dao.tipe,
+    ukuran = dao.ukuran,
+    deskripsi = dao.deskripsi,
+    pathGambar = dao.pathGambar,
+    createdAt = dao.createdAt,
+    updatedAt = dao.updatedAt
+)
